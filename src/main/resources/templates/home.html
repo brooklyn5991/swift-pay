@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Swift pay</title>
+	</head>
+	
+	<body>
+	    <header style="display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; background-color: #f8f9fa; border-bottom: 2px solid #007bff;">
+	        
+	        <div style="display: flex; align-items: center; gap: 15px;">
+	            <img th:src="@{/images/swiftlogo.png}" width="40" height="40" alt="Logo" />
+	            <h1 style="margin: 0; color: #007bff; font-family: sans-serif;">SwiftPay</h1>
+	        </div>
+
+	        <nav>
+	            <a th:href="@{/login}" style="text-decoration: none; background-color: #007bff; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; font-family: sans-serif;">
+	                Login
+	            </a>
+	        </nav>
+	    </header>
+
+	    <main style="padding: 40px; text-align: center;">
+	        <h2>Fast. Secure. Reliable.</h2>
+	        <p>The future of digital payments is here.</p>
+	    </main>
+	</body>
+</html>
