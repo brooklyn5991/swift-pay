@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SwiftPay | Rates</title>
+    <style>
+        body { font-family: sans-serif; padding: 50px; background-color: #f4f7f6; }
+        table { width: 100%; background: white; border-collapse: collapse; border-radius: 10px; overflow: hidden; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #007bff; color: white; }
+		/* Container for the Calculator */
+		.converter-card {
+		    background: white;
+		    padding: 30px;
+		    border-radius: 12px;
+		    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+		    margin-bottom: 30px;
+		    max-width: 500px;
+		}
+
+		.converter-card h3 {
+		    margin-top: 0;
+		    color: #333;
+		    font-size: 1.1rem;
+		}
+
+		/* The Input Group */
+		.input-group {
+		    display: flex;
+		    gap: 10px;
+		    margin-top: 15px;
+		}
+
+		.input-group input {
+		    flex: 1;
+		    padding: 12px 15px;
+		    border: 2px solid #e1e4e8;
+		    border-radius: 8px;
+		    font-size: 1rem;
+		    outline: none;
+		    transition: border-color 0.3s;
+		}
+
+		.input-group input:focus {
+		    border-color: #007bff; /* SwiftPay Blue */
+		}
+
+		/* The Convert Button */
+		.btn-convert {
+		    background-color: #007bff;
+		    color: white;
+		    border: none;
+		    padding: 10px 25px;
+		    border-radius: 8px;
+		    font-weight: bold;
+		    cursor: pointer;
+		    transition: background 0.3s;
+		}
+
+		.btn-convert:hover {
+		    background-color: #0056b3;
+		}
+    </style>
+</head>
+<body>
+    <h1>Currency Converter</h1>
+    <p>Your Balance: <strong th:text="${'$ ' + balance}"></strong></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Currency</th>
+                <th>Rate (to $1)</th>
+                <th>Your Value</th>
+            </tr>
+        </thead>
+        <tbody>
+			<div class="converter-card">
+			    <h3>Currency Calculator</h3>
+			    <p style="color: #666; font-size: 0.9rem;">Enter an amount to see its value in other currencies.</p>
+			    
+			    <form th:action="@{/currencies}" method="post">
+			        <div class="input-group">
+			            <input type="number" 
+			                   step="0.01" 
+			                   name="amount" 
+			                   th:value="${amount}" 
+			                   placeholder="Enter amount..." 
+			                   required />
+			            <button type="submit" class="btn-convert">Convert</button>
+			        </div>
+			    </form>
+			</div>
+            <!-- <tr th:each="c : ${currencies}">
+                <td th:text="${c.name + ' (' + c.code + ')'}"></td>
+                <td th:text="${c.rate}"></td>
+                <td th:text="${#numbers.formatDecimal(balance * c.rate, 1, 2)}"></td>
+            </tr> -->
+        </tbody>
+    </table>
+    <br>
+    <a th:href="@{/dashboard}">Back to Dashboard</a>
+</body>
+</html>

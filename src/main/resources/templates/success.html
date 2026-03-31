@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SwiftPay | Success</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            background-color: #f4f7f6; 
+            margin: 0; 
+        }
+        .success-card { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
+            width: 350px; 
+            text-align: center; 
+        }
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            background-color: #d4edda;
+            color: #28a745;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            margin: 0 auto 20px;
+        }
+        h2 { color: #333; margin-bottom: 10px; }
+        p { color: #666; line-height: 1.5; margin-bottom: 25px; }
+        .btn-dashboard { 
+            display: inline-block;
+            width: 100%; 
+            padding: 12px; 
+            background-color: #007bff; 
+            color: white; 
+            text-decoration: none;
+            border-radius: 6px; 
+            font-weight: bold; 
+        }
+        .btn-dashboard:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="success-card">
+        <div class="icon-circle">✓</div>
+        <h2>Transfer Sent!</h2>
+        <p>Your money is on its way. The recipient will be notified once the transaction is finalized.</p>
+        
+        <a th:href="@{/transfer}" class="btn-dashboard">Send Another Transfer</a>
+        <br/><br/>
+        <a th:href="@{/}" style="color: #888; text-decoration: none; font-size: 0.9em;">Back to Home</a>
+    </div>
+</body>
+</html>

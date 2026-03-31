@@ -12,15 +12,18 @@
     </style>
 </head>
 <body>
-    <div class="login-card">
-        <img th:src="@{/images/swiftlogo.png}" width="50" alt="Logo">
-        <h2>Login to SwiftPay</h2>
-        <form>
-            <input type="text" placeholder="Username or Email" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit" class="login-btn">Sign In</button>
-        </form>
-        <p style="font-size: 0.8em; margin-top: 15px;"><a href="/">Back to Home</a></p>
-    </div>
+	<div class="login-card">
+	    <img th:src="@{/images/swiftlogo.png}" width="50" alt="Logo">
+	    <h2>Login to SwiftPay</h2>
+	    
+	    <form th:action="@{/login}" method="POST">
+	        <input type="text" name="username" placeholder="Username (Optional)">
+	        <input type="password" name="password" placeholder="Password (Optional)">
+	        
+	        <button type="submit" class="login-btn">Sign In</button>
+	    </form>
+	    
+	    <p style="font-size: 0.8em; margin-top: 15px;"><a href="/">Back to Home</a></p>
+	</div>
 </body>
 </html>
