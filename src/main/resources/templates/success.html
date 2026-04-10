@@ -53,9 +53,17 @@
         <h2>Transfer Sent!</h2>
         <p>Your money is on its way. The recipient will be notified once the transaction is finalized.</p>
         
+		<div style="background: #f8f9fa; padding: 10px; border-radius: 8px; margin-bottom: 20px; border: 1px dashed #ccc;">
+		        <span style="display: block; font-size: 0.8em; color: #999; text-transform: uppercase;">Reference ID</span>
+		        <strong style="font-size: 1.2em; color: #333;" th:text="${refId}">ID_NOT_FOUND</strong>
+		    </div>
+			
         <a th:href="@{/transfer}" class="btn-dashboard">Send Another Transfer</a>
         <br/><br/>
-        <a th:href="@{/}" style="color: #888; text-decoration: none; font-size: 0.9em;">Back to Home</a>
-    </div>
+        <a th:href="@{/transfer/history}" style="color: #888; text-decoration: none; font-size: 0.9em;">Check Transaction History</a>
+		<br/><br/>
+	    <a th:href="@{/}" style="color: #888; text-decoration: none; font-size: 0.9em;">Back to Home</a>
+		    
+		</div>
 </body>
 </html>

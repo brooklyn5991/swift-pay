@@ -2,6 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>SwiftPay | Dashboard</title>
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0">
     <style>
         body { font-family: sans-serif; background-color: #f4f7f6; margin: 0; }
         .sidebar { width: 250px; height: 100vh; background: #007bff; color: white; position: fixed; padding: 20px; }
@@ -13,16 +16,21 @@
 <body>
     <div class="sidebar">
         <h2>SwiftPay</h2>
-        <p>Welcome, User!</p>
+        <p>Welcome, <span th:text="${user.fullname}">User</span>!</p>
         <hr>
-        <p><a href="/" style="color: white;">Logout</a></p>
+        <!--<p><a href="/" style="color: white;">Logout</a></p>-->
+		<form th:action="@{/logout}" method="post">
+		        <button type="submit" style="background: none; border: none; color: white; text-decoration: underline; cursor: pointer; padding: 0; font-family: inherit; font-size: inherit;">
+		            Logout
+		        </button>
+		    </form>
     </div>
 
     <div class="main-content">
         <h1>Account Overview</h1>
         <div class="card">
             <h3>Available Balance</h3>
-            <h2 text="${balance}" style="color: #28a745;">5000</h2>
+            <h2 th:text="${user.balance}" style="color: #28a745;">₦0.00</h2>
         </div>
         <br>
 		

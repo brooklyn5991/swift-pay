@@ -1,33 +1,36 @@
 package com.swiftpay.web;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.swiftpay.User;
+
+
 @Controller
 public class HomeController {
-	
+    
     @GetMapping("/") 
     public String home() {
         return "home";
     }
-	
+    
     @GetMapping("/login")
     public String login() {
         return "login";
     }
 
-    // NEW: This activates the login button
-    @PostMapping("/login")
-    public String processLogin() {
-        // No security check yet—just a straight jump into the bank!
-        return "redirect:/dashboard";
-    }
-
-    // NEW: The "Inside" of the bank
     @GetMapping("/dashboard")
-    public String dashboard() {
+    public String dashboard(@AuthenticationPrincipal User user, Model model) {
+        // 'user' is now the actual User object from your database!
+        model.addAttribute("username", user.getFullname());
+        
+        // In a real app, you'd get the balance from the database here
+        model.addAttribute("user", user); 
+        
         return "dashboard";
     }
-    
 }
+    
